@@ -22,8 +22,9 @@ public class SumOfLeftLeafNode {
             if(isLeaf(root.left)){
                 sum += root.left.val;
             } else {
-               sum += sumLeftLeafNodes(root.left);
+                sum += sumLeftLeafNodes(root.left);
             }
+
             sum += sumLeftLeafNodes(root.right);
         }
 
