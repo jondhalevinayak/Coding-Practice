@@ -5,14 +5,12 @@ import java.util.*;
 public class Test {
 
     public static void main(String[] args) {
-        String str1 = "{(}{(((}{{}}}]][]";
-        String str2 = "{}()[]";
+        int k =  2 % 5;
+        System.out.println(k);
 
-        boolean val = validParathesis(str1);
-        System.out.println(val);
+        Arrays.asList(0, 1);
+        var a = 1;
 
-        boolean val2 = validParathesis(str2);
-        System.out.println(val2);
 
     }
 
@@ -23,6 +21,9 @@ public class Test {
         map.put('{', '}');
         map.put('[', ']');
 
+        for(Map.Entry<Character, Character> entry : map.entrySet()){
+
+        }
         Stack<Character> stack = new Stack<>();
 
         for(int i = 0; i < str.length(); i++){

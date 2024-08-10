@@ -11,13 +11,13 @@ public class MeetingRoomII {
 
         Arrays.sort(arr, Comparator.comparingInt(a -> a[0]));
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        int count = 1;
-
+        int count = 0;
         for(int[] itv : arr){
             if(pq.isEmpty()){
                 pq.add(itv[1]);
+                count++;
             } else {
-                if(!pq.isEmpty() && pq.peek() > itv[0]){
+                if(pq.peek() > itv[0]){
                     pq.poll();
                     count++;
                 }

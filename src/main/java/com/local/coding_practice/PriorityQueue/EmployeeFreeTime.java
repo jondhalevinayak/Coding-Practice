@@ -1,10 +1,7 @@
 package com.local.coding_practice.PriorityQueue;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 class Interval {
     public int start;
@@ -50,13 +47,15 @@ public class EmployeeFreeTime {
     private static List<Interval> employeeFreeTime(List<List<Interval>> listOfInterval) {
 
         //merge into single list
-        List<Interval> allIntervals = new ArrayList<>();
-        for (List<Interval> list : listOfInterval) {
-            allIntervals.addAll(list);
-        }
+        //List<Interval> allIntervals = new ArrayList<>();
+        //for (List<Interval> list : listOfInterval) {
+         //   allIntervals.addAll(list);
+        //}
 
-        //sort by start time
-        allIntervals.sort(Comparator.comparingInt(interval -> interval.start));
+        //merge into single list and sort by start time
+        List<Interval> allIntervals = listOfInterval.stream().flatMap(Collection::stream)
+                .sorted(Comparator.comparingInt(interval -> interval.start)).toList();
+
 
         //merge overlapping intervals
         LinkedList<Interval> merged = new LinkedList<>();
