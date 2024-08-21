@@ -1,45 +1,48 @@
-package com.local.coding_practice.SystemDesign.SnakeAndLadder;
+package com.local.coding_practice.SystemDesign1.SnakeAndLadder1;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Board {
 
-    HashMap<Integer, Move> cells;
+    Map<Integer, Move> cells;
     int cellCount;
 
-    Board(int dimensions) {
-        this.cellCount = dimensions * dimensions;
-        cells = new HashMap<Integer, Move>();
-        //Randomly generate Snakes and Ladders
-        for (int i = 0; i < dimensions; i++) {
+    public Board(int dimension) {
+        cells = new HashMap<>();
+        cellCount = dimension * dimension;
+
+        for (int i = 0; i < dimension; i++) {
+
             int min = 2;
             int max = cellCount - 1;
             int start = (int) Math.floor(Math.random() * (max - min + 1) + min);
             max = start - 1;
             int end = (int) Math.floor(Math.random() * (max - min + 1) + min);
-            if (!hasSnakeOrLadder(start)) {
-                setEntity(start, new Snake(start, end));
+
+            if (!hasSnakeOrLadder(i)) {
+                setEntity(i, new Snake(start, end));
             }
+
             max = cellCount - 1;
             end = (int) Math.floor(Math.random() * (max - min + 1) + min);
             max = end - 1;
             start = (int) Math.floor(Math.random() * (max - min + 1) + min);
-            if (!hasSnakeOrLadder(start)) {
-                setEntity(start, new Ladder(start, end));
+            if (!hasSnakeOrLadder(i)) {
+                setEntity(i, new Ladder(start, end));
             }
-
         }
     }
 
-    private void setEntity(int start, Move move) {
-        cells.put(start, move);
+    public Move getEntity(int start) {
+        return this.cells.get(start);
     }
 
-    public Move getEnity(int start) {
-        return cells.get(start);
+    public void setEntity(int start, Move move) {
+        this.cells.put(start, move);
     }
 
-    boolean hasSnakeOrLadder(int start) {
+    public boolean hasSnakeOrLadder(int start) {
         return cells.containsKey(start);
     }
 
@@ -49,8 +52,9 @@ public class Board {
             if (hasSnakeOrLadder(i)) {
                 System.out.print(cells.get(i).getString());
             } else {
-                System.out.print( "      ");
+                System.out.print("  ");
             }
+
             if (i % 10 == 0) {
                 System.out.println();
             }
