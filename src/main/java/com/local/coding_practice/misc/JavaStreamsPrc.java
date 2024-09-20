@@ -1,4 +1,4 @@
-package com.local.coding_practice.Test;
+package com.local.coding_practice.misc;
 
 import java.util.*;
 import java.util.function.Function;
