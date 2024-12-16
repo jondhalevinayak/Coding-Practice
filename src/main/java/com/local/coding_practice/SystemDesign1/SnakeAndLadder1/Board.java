@@ -62,4 +62,8 @@ public class Board {
 
         System.out.println();
     }
+
+    public com.local.coding_practice.SystemDesign.SnakeAndLadder.Move getEnity(int finalPosition) {
+        return null;
+    }
 }
